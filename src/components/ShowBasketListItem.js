@@ -12,7 +12,7 @@ function ShowBasketListItem({name, price, id, qunitity,deletOrderProduct, addOrd
                     type='button' 
                     onClick={() => addOrderProductCount(id)}
                     >
-                        <i class="bi bi-plus fs-4"></i>
+                        <i className="bi bi-plus fs-4"></i>
                         Add
                     </button>
 
@@ -21,7 +21,7 @@ function ShowBasketListItem({name, price, id, qunitity,deletOrderProduct, addOrd
                     type='button'
                     onClick={() => removeOrderProductCount(id)}
                     >
-                        <i class="bi bi-dash"></i>
+                        <i className="bi bi-dash"></i>
                         Remove
                     </button>
 
@@ -30,7 +30,7 @@ function ShowBasketListItem({name, price, id, qunitity,deletOrderProduct, addOrd
                     type='button' 
                     onClick={() => deletOrderProduct(id)}
                     >
-                    <i class="bi bi-trash fs-4 text-danger"></i>
+                    <i className="bi bi-trash fs-4 text-danger"></i>
                     </button>
                 </span>
             </li>

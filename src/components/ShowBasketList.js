@@ -2,17 +2,17 @@ import React from 'react';
 import ShowBasketListItem from './ShowBasketListItem';
 
 function ShowBasketList(props) {
-    const {order = [] , handleShowBasket = Function.prototype, deletOrderProduct, addOrderProductCount, removeOrderProductCount} = props
+    const {order = [] , handleShowBasket = Function.prototype, deletOrderProduct, addOrderProductCount, removeOrderProductCount, handleNotShowBasket} = props
 
     let totqlPrice = order.reduce((total, el) => {
         return total + (el.qunitity * el.price)
     }, 0)
 
     return (
-        <div className='show-basket'>
-            <div className="sow-basket-content">
-                <ul className="list-group sow-basket-list">
-                    <li className="list-group-item list-group-item-dark text-center ">
+        <div className='show-basket' onClick={handleShowBasket}>
+            <div className="show-basket-content" onClick={handleNotShowBasket}>
+                <ul className="list-group sow-basket-list list" >
+                    <li className="list-group-item list-group-item-success text-center ">
                         Basket
                     </li>
                         {
@@ -29,7 +29,7 @@ function ShowBasketList(props) {
                             :
                             <li className='list-group-item list-group-item-danger text-center'>There are no products in the cart yet</li>
                         }
-                    <li className="list-group-item list-group-item-dark text-center">
+                    <li className="list-group-item list-group-item-success text-center">
                         Total price: {totqlPrice} <b>$</b>
                     </li>
 

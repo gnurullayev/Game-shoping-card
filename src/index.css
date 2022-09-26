@@ -19,11 +19,16 @@ code {
 }
 
 .header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 20;
   background-color: rgb(241, 182, 134);
 }
 
 .main {
-  min-height: calc(100vh - 57px - 40px);
+  min-height: calc(100vh - 40px);
+  margin-top: 57px;
   padding-bottom: 20px;
   background-color: #222;
 }
@@ -44,9 +49,11 @@ p {
   top: 60px;
   right: 20px;
   z-index: 10;
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
   color: white;
+  background-color: rgb(80, 81, 82);
+  border-radius: 10px;
 }
 
 .busket-btn {
@@ -57,8 +64,8 @@ p {
 
 .basket-icon {
   position: absolute;
-  top: -10px;
-  left: -10px;
+  top: -5px;
+  left: -25px;
   width: 40px;
   height: 40px;
   font-size: 40px;
@@ -66,10 +73,11 @@ p {
 }
 
 .busket-index {
-  margin-top: 8px;
-  padding-left: 4px;
+  position: absolute;
+  margin-top: 30px;
+  margin-left: 40px;
   z-index: 20;
-  color: #000;
+  color: antiquewhite;
   font-size: 17px;
   font-weight: 700;
 }
@@ -81,17 +89,30 @@ p {
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
+  overflow-y: hidden;
 }
 
-.sow-basket-content {
+
+
+.show-basket-content {
   position: fixed;
   top: 50%;
   left: 50%;
+  z-index: 20;
   transform: translate(-50%, -50%);
   width: 800px;
   max-width: 95%;
+  padding: 0px 0;
   background-color: #fff;
   border-radius: 5px;
+  animation-name: show;
+  animation-duration: .3s;
+  animation-timing-function: linear;
+}
+
+.list {
+  max-height: 500px;
+  overflow: auto;
 }
 
 .button {
@@ -101,4 +122,9 @@ p {
   position: absolute;
   top: 3px;
   right: 10px;
+}
+
+@keyframes show {
+  0% {top: 60%;   opacity: 0;}
+  100% {top: 50%;   opacity: 1;}
 }

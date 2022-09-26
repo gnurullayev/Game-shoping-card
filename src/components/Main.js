@@ -4,6 +4,7 @@ import {FETCH_URL,USER_KEY}from "../config"
 import GoodsList from './GoodsList';
 import Basket from './Basket';
 import ShowBasketList from './ShowBasketList';
+import { toast } from 'react-toastify';
 
 function Main(props) {
     const [goods, setGoods] = useState([])
@@ -19,26 +20,41 @@ function Main(props) {
                 qunitity: 1
             }
             setOrder([...order,newProduct])
+            toast.success("This product has been added to the order list")
         }
         else {
-           let newOrder = order.map((prodc,index) => {
+            let newOrder = order.map((prodc,index) => {
                 if(index === productIndex) {
                     return {...prodc, qunitity:prodc.qunitity + 1 }
                 }
                 return prodc
            })
             setOrder(newOrder)
+            let newProduct = newOrder.find(orderProduct => orderProduct.id === product.id);
+            toast.success(`${newProduct.qunitity} of this product have been added to the order list`)
         }
 
+        
+
     }
 
-    const handleShowBasket = () => {
+    
+    const handleShowBasket = (event) => {
         setBascetShow(!isBasketShow)
+        event.stopPropagation()
     }
+
+    const handleNotShowBasket = (event) => {
+        setBascetShow(true)
+        event.stopPropagation()
+    }
+
 
     const deletOrderProduct = (productId) => {
         let newOrder = order.filter(el => el.id !== productId)
         setOrder(newOrder)
+
+        toast.error("the product has been ordered")
     }
 
     const addOrderProductCount = (productId) => {
@@ -50,6 +66,9 @@ function Main(props) {
             return el
         })
         setOrder(newOrder)
+
+        let newProduct = newOrder.find(orderProduct => orderProduct.id === productId);
+        toast.success(`${newProduct.qunitity} of this product have been added to the order list`)
     }
 
     const removeOrderProductCount = (productId) => {
@@ -97,6 +116,7 @@ function Main(props) {
                     isBasketShow && <ShowBasketList 
                     order={order} 
                     handleShowBasket = {handleShowBasket}
+                    handleNotShowBasket = {handleNotShowBasket}
                     deletOrderProduct = {deletOrderProduct}
                     addOrderProductCount = {addOrderProductCount}
                     removeOrderProductCount = {removeOrderProductCount}
