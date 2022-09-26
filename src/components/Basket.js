@@ -1,9 +1,9 @@
 import React from 'react';
 
-function Basket({order}) {
+function Basket({order, handleShowBasket}) {
 
     return (
-        <div className='basket d-flex justify-content-center'>
+        <div className='basket d-flex justify-content-center' onClick={handleShowBasket}>
             <button className='busket-btn'>
                 <i className="bi bi-cart-fill basket-icon"></i>
             </button>
